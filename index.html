@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Visualizing Climate</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/styles.css">
+    <link rel="apple-touch-icon-precomposed" href="/public/images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <meta name="description" content="Visualizing NOAA climate observations from the conterminous United States for the year 2017" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="summary">
+    <meta name="twitter:title" content="Visualizing Climate">
+    <meta name="twitter:description" content="Visualizing NOAA climate observations from the conterminous United States for the year 2017">
+    <meta name="twitter:image" content="https://nathanielwroblewski.github.io/climates/screenshot.png">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Visualizing Climate" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://nathanielwroblewski.github.io/climates" />
+    <meta property="og:image" content="https://nathanielwroblewski.github.io/climates/screenshot.png" />
+    <meta property="og:description" content="Visualizing NOAA climate observations from the conterminous United States for the year 2017" />
+    <meta property="og:site_name" content="Visualizing Climate" />
+
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Visualizing Climate">
+    <meta itemprop="description" content="Visualizing NOAA climate observations from the conterminous United States for the year 2017">
+    <meta itemprop="image" content="https://nathanielwroblewski.github.io/climates/screenshot.png">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Visualizing Climate</h1>
+      <p class="subtitle">Observations from the conterminous United States for the year 2017</p>
+      <section>
+        <p class="text">
+          When choosing a place to live, people often consider climate, <i>inter alia</i>, but as the number of options grows, the degrees of difference lessen, trade-offs become multi-dimensional, and heuristically comparing climates becomes quite challenging.
+        </p>
+        <p class="text">
+          Classification systems intended for climate comparisons like <a href="https://en.wikipedia.org/wiki/K%C3%B6ppen_climate_classification">Köppen-Geiger</a> or <a href="https://en.wikipedia.org/wiki/Trewartha_climate_classification">Trewartha</a> are certainly more accurate than heuristic-based comparisons, but these systems may not be granular enough.  To achieve a higher degree of granularity, I averaged <a href="http://www.noaa.gov/">NOAA</a> temperature records and projected them spatially:
+        </p>
+        <figure class="figure-1">
+          <figcaption class="figure-title text">Fig. 1: Mercator projection of NOAA climate observations</figcaption>
+          <select class="scatter-map-select">
+            <option value="avgTemp">Annual average temperature (&deg;C)</option>
+            <option value="avgMin">Annual average minimum temperature (&deg;C)</option>
+            <option value="avgMax">Annual average maximum temperature (&deg;C)</option>
+            <option value="variance">Annual average temperature variance</option>
+          </select>
+          <canvas class="scatter-map" width="800px" height="500px"></canvas>
+        </figure>
+        <p class="text">
+          The projection above reveals interesting regional patterns, but it is less suited for determining the degree of difference.  For a comparison of climate features by degree, a mult-dimensional scatter plot may be more useful.  Figure two depicts how temperature variance and rainfall vary with average temperature.  To find consistently hot and dry locations in figure two, zoom-in on the bottom-rightmost corner where rainfall is zero, temperatures are highest, and variance is at a minimum.
+        </p>
+        <figure class="figure-2">
+          <figcaption class="figure-title text">
+            Fig. 2: Interactive scatter plot of temperature variance, average temperature, and rainfall
+          </figcaption>
+          <figcaption class="instructions">
+            Drag to rotate.  Scroll to zoom.  Hover for data.
+          </figcaption>
+          <div class="scatter-plot">
+            <div class="loading">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </figure>
+        <p class="text">
+          Finally, I include a tabular representation of the above data which is useful for fast look-ups.  As a reminder, these values are sampled from a single year, and for <i>most</i> purposes, it would be prudent to average climate observations over 15 or 30 years.
+        </p>
+        <figure class="figure-3">
+          <figcaption class="figure-title text">
+            Fig. 3: Tabular data
+          </figcaption>
+          <div class="tabular-data">
+            <div class="loading">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </figure>
+      </section>
+    </div>
+  </body>
+  <script type="text/javascript" src="//cdn.plot.ly/plotly-1.40.1.min.js"></script>
+  <script type="text/javascript" src="/public/javascripts/namespace.js"></script>
+  <script type="text/javascript" src="/public/javascripts/constants/cividis.js"></script>
+  <script type="text/javascript" src="/public/javascripts/datasets/weather.js"></script>
+  <script type="text/javascript" src="/public/javascripts/models/collection.js"></script>
+  <script type="text/javascript" src="/public/javascripts/views/scatter_map.js"></script>
+  <script type="text/javascript" src="/public/javascripts/views/scatter_plot.js"></script>
+  <script type="text/javascript" src="/public/javascripts/views/table.js"></script>
+  <script type="text/javascript" src="/public/javascripts/main.js"></script>
+</html>

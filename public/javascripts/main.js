@@ -4,7 +4,7 @@
   const { ScatterMap, ScatterPlot, Table } = App.Views
 
   const formatDeg = degrees => String(degrees).replace(/(.+)(.)$/, '$1.$2') + '\xB0C'
-  const formatVar = variance => String(number / 100)
+  const formatVar = variance => String(variance / 100)
 
   // Fig. 1
   !function () {

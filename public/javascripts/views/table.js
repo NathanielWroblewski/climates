@@ -65,19 +65,17 @@ const textCompare = (a, b) => (
 )
 
 const numCompare = (a = 0, b = 0) => {
-  if (a === b) return 0
+  if (parseFloat(a) === parseFloat(b)) return 0
 
-  return a > b ? 1 : -1
+  return parseFloat(a) > parseFloat(b) ? 1 : -1
 }
 
 const COMPARATORS = {
   station: (a, b) => textCompare(a.name, b.name),
   state: (a, b) => textCompare(a.state, b.state),
-  // latitude: (a, b) => numCompare(a.latitude || 0, b.latitude || 0),
-  // longitude: (a, b) => numCompare(a.longitude || 0, b.longitude || 0),
   min: (a, b) => numCompare(a.min || 0, b.min || 0),
   max: (a, b) => numCompare(a.max || 0, b.max || 0),
-  avg: (a, b) => numCompare(a.avg || 0, b.avg || 0),
+  avg: (a, b) => numCompare(a.avg_temp || 0, b.avg_temp || 0),
   avg_min: (a, b) => numCompare(a.avg_min || 0, b.avg_min || 0),
   avg_max: (a, b) => numCompare(a.avg_max || 0, b.avg_max || 0),
   variance: (a, b) => numCompare(a.variance / 100 || 0, b.variance / 100 || 0),
